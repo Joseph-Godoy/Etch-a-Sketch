@@ -1,12 +1,12 @@
 const lienzo = document.querySelector('.content')
 
-let x = 10;
+let x = 25;
 
 for (let i = 0; i < x*x; i++) {
     const cuadrado = document.createElement('div');
     cuadrado.className = 'cuadro';
-    cuadrado.style.width = (600 / x) + "px";
-    cuadrado.style.height = (600 / x) + "px"
+    cuadrado.style.width = (720 / x) + "px";
+    cuadrado.style.height = (720 / x) + "px"
     lienzo.appendChild(cuadrado);
 }
 
@@ -29,6 +29,14 @@ cuadro.forEach(element => {
     }
     })
 });
+
+const btnBorrar = document.querySelector('.btnBorrar')
+
+btnBorrar.addEventListener('click', function() {
+    cuadro.forEach(element => {
+        element.classList.remove('clickCuadro');
+    })
+})
 
 
 
