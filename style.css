@@ -1,0 +1,48 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(19, 18, 42);
+    gap: 30px;
+}
+
+h1 {
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 800;
+    font-size: 50px;
+    margin-top: 80px;
+}
+
+.contenedor {
+    display: flex;
+    padding: 0px;
+    align-items: flex-start;
+    width: 600px;
+    height: 600px;
+    background-color: white;
+    border: 50px solid rgb(193, 60, 60);
+    border-radius: 10px;
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    height: 600px;
+    width: 600px;
+}
+
+.cuadro {
+    box-sizing: border-box;
+    border: 1px solid black;
+    user-select: none;
+}
+
+.clickCuadro {
+    background-color: black;
+}
+
+.cuadro:hover {
+    background-color: black;
+}
+
