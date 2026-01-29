@@ -38,6 +38,12 @@ btnBorrar.addEventListener('click', function() {
     })
 })
 
+cuadro.forEach(element => {
+    element.addEventListener('click', function() {
+        element.classList.add('clickCuadro')
+    })
+});
+
 
 
 
