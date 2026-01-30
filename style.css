@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&family=Lilita+One&display=swap');
 
+:root {
+    --cambiarColor: black;
+}
+
 body {
     display: flex;
     justify-content: center;
@@ -15,6 +19,8 @@ h1 {
     font-size: 70px;
     margin: 10px 0px;
 }
+
+/*Creacion del lienzo y sus cuadros*/
 
 .contenedor {
     display: flex;
@@ -35,19 +41,35 @@ h1 {
     width: 720px;
 }
 
-.cuadro {
+#cuadro {
     box-sizing: border-box;
     border: 1px solid black;
     user-select: none;
 }
 
-.clickCuadro {
+#cuadro:hover {
+    background-color: var(--cambiarColor);
+}
+
+/*Pintar de color negro*/
+
+.colorNegro {
     background-color: black;
 }
 
-.cuadro:hover {
-    background-color: black;
+.colorRojo {
+    background-color: red;
 }
+
+.colorVerde {
+    background-color: green;
+}
+
+.colorAzul {
+    background-color: blue;
+}
+
+/*Separacion del lienzo y las opciones*/
 
 .principal {
     text-align: center;
@@ -57,7 +79,10 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: 30px;
 }
+
+/*Boton para borrar todo*/
 
 .btnBorrar {
     background-color: #FF6B6B;
@@ -78,5 +103,140 @@ h1 {
     transform: scale(1.05);
 }
 
+/*Boton del borrador*/
 
+.btnBorrador {
+    background-color: #ffffff;
+    padding: 20px 40px;
+    font-size: 20px;
+    font-family: 'Fredoka', sans-serif;
+    border: none;
+    border-radius: 15px;
+    color: rgb(104, 104, 104);
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: 0.2s;
+}
 
+.btnBorrador:hover {
+    background-color: #e4e4e4;
+    transform: scale(1.05);
+}
+
+/*Boton del color negro*/
+
+.btnNegro {
+    background-color: #000000;
+    padding: 30px 40px;
+    font-size: 20px;
+    font-family: 'Fredoka', sans-serif;
+    border: none;
+    border-radius: 15px;
+    color: rgb(104, 104, 104);
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: 0.2s;
+}
+
+.btnAzul {
+    background-color: Blue;
+    padding: 30px 40px;
+    font-size: 20px;
+    font-family: 'Fredoka', sans-serif;
+    border: none;
+    border-radius: 15px;
+    color: rgb(104, 104, 104);
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: 0.2s;
+}
+
+.btnVerde {
+    background-color: Green;
+    padding: 30px 40px;
+    font-size: 20px;
+    font-family: 'Fredoka', sans-serif;
+    border: none;
+    border-radius: 15px;
+    color: rgb(104, 104, 104);
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: 0.2s;
+}
+
+.btnRojo {
+    background-color: red;
+    padding: 30px 40px;
+    font-size: 20px;
+    font-family: 'Fredoka', sans-serif;
+    border: none;
+    border-radius: 15px;
+    color: rgb(104, 104, 104);
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: 0.2s;
+}
+
+.btnNegro:hover {
+    transform: scale(1.05);
+}
+
+.btnRojo:hover {
+    transform: scale(1.05);
+}
+
+.btnVerde:hover {
+    transform: scale(1.05);
+}
+
+.btnAzul:hover {
+    transform: scale(1.05);
+}
+
+.texto {
+    color: white;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.tamaño {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 100px;
+    gap: 30px;
+}
+
+input {
+    padding: 20px 0px;
+    font-size: 20px; 
+    font-family: 'Fredoka', sans-serif;
+    border: none;
+    border-radius: 15px;
+    color: rgb(104, 104, 104);
+    font-weight: bold;
+    text-align: center;
+}
+
+.btnEnter {
+    background-color: rgb(255, 255, 255);
+    padding: 20px 30px;
+    font-size: 20px;
+    font-family: 'Fredoka', sans-serif;
+    border: none;
+    border-radius: 15px;
+    color: rgb(104, 104, 104);
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: 0.2s;
+}
+
+.btnEnter:hover {
+    transform: scale(1.05);
+}
