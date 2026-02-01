@@ -1,121 +1,96 @@
-//Creacion del lienzo -------------------------------------------------------------------
+//Variables globales
 const lienzo = document.querySelector('.content')
-
-const input = document.querySelector('.input')
-
-let x = input.value
-
-
-
-for (let i = 0; i < x * x; i++) {
-    const cuadrado = document.createElement('div');
-    cuadrado.id = 'cuadro';
-    cuadrado.style.width = (720 / x) + "px";
-    cuadrado.style.height = (720 / x) + "px"
-    lienzo.appendChild(cuadrado);
-}
-
-
-
-//Pintar cuadrado de negro -------------------------------------------------------------------
-
-const cuadro = document.querySelectorAll('#cuadro')
-
+const btnTamaño = document.querySelector('.btnTamaño')
 const btnBorrador = document.querySelector('.btnBorrador')
 const btnNegro = document.querySelector('.btnNegro')
 const btnRojo = document.querySelector('.btnRojo')
 const btnVerde = document.querySelector('.btnVerde')
 const btnAzul = document.querySelector('.btnAzul')
-
+const btnBorrar = document.querySelector('.btnBorrar')
 var root = document.querySelector(':root');
 var rootStyles = getComputedStyle(root);
+let cuadro = '';
+let modo = 'colorNegro';
+let mousePresionado = false;
+
+// ------------------------------------------------------------------------------------------------------------
+// Funciones
+// ------------------------------------------------------------------------------------------------------------
+
+function crearCuadricula(x) {
+    for (let i = 0; i < x * x; i++) {
+        const cuadrado = document.createElement('div');
+        cuadrado.id = 'cuadro';
+        cuadrado.style.width = (720 / x) + "px";
+        cuadrado.style.height = (720 / x) + "px"
+        lienzo.appendChild(cuadrado);
+    }
+    cuadro = document.querySelectorAll('#cuadro')
+    correrCuadricula(cuadro);
+};
+
+function correrCuadricula(x) {
+    
+    x.forEach(element => {
+        element.addEventListener('mouseover', function () {
+            if (mousePresionado == true) {
+                element.className = modo;
+            }
+        })
+    })
+    document.addEventListener('mousedown', function (e) { 
+        mousePresionado = true; 
+        if (e.target.id == 'cuadro') {
+            e.target.className = modo;
+        }
+    });
+    document.addEventListener('mouseup', function () { mousePresionado = false; })
+};
+
+
+// ------------------------------------------------------------------------------------------------------------
+// Eventos
+// ------------------------------------------------------------------------------------------------------------
+
+btnTamaño.addEventListener('click', function () {
+    let x = prompt('Escribe un tamaño del 1 al 100:')
+    while (x > 100 || x < 1) {
+        alert('ese numero es incorrecto, debe ser del 1 al 100')
+        x = prompt('Escribe un tamaño del 1 al 100:')
+    }
+    lienzo.innerHTML = '';
+    crearCuadricula(x);
+})
 
 btnBorrador.addEventListener('click', function () {
     root.style.setProperty('--cambiarColor', 'white')
-    cuadro.forEach(element => {
-        element.addEventListener('mouseover', function () {
-            if (mousePresionado == true) {
-                element.className = ''
-            }
-        })
-
-        element.addEventListener('click', function () {
-            element.classList = ''
-        })
-    });
+    modo = '';
+    correrCuadricula(cuadro);
 })
 
 btnNegro.addEventListener('click', function () {
     root.style.setProperty('--cambiarColor', 'black')
-    cuadro.forEach(element => {
-        element.addEventListener('mouseover', function () {
-            if (mousePresionado == true) {
-                element.className = 'colorNegro'
-            }
-        })
-
-        element.addEventListener('click', function () {
-            element.classList = 'colorNegro'
-        })
-    });
+    modo = 'colorNegro';
+    correrCuadricula(cuadro);
 })
 
 btnRojo.addEventListener('click', function () {
     root.style.setProperty('--cambiarColor', 'red')
-    cuadro.forEach(element => {
-        element.addEventListener('mouseover', function () {
-            if (mousePresionado == true) {
-                element.classList = 'colorRojo'
-            }
-        })
-
-        element.addEventListener('click', function () {
-            element.classList = 'colorRojo'
-        })
-    });
+    modo = 'colorRojo';
+    correrCuadricula(cuadro);
 })
 
 btnVerde.addEventListener('click', function () {
     root.style.setProperty('--cambiarColor', 'green')
-    cuadro.forEach(element => {
-        element.addEventListener('mouseover', function () {
-            if (mousePresionado == true) {
-                element.classList = 'colorVerde'
-            }
-        })
-
-        element.addEventListener('click', function () {
-            element.classList = 'colorVerde'
-        })
-    });
+    modo = 'colorVerde'
+    correrCuadricula(cuadro);
 })
 
 btnAzul.addEventListener('click', function () {
     root.style.setProperty('--cambiarColor', 'blue')
-    cuadro.forEach(element => {
-        element.addEventListener('mouseover', function () {
-            if (mousePresionado == true) {
-                element.classList = 'colorAzul'
-            }
-        })
-
-        element.addEventListener('click', function () {
-            element.classList = 'colorAzul'
-        })
-    });
+    modo = 'colorAzul';
+    correrCuadricula(cuadro);
 })
-
-let mousePresionado = false;
-
-document.addEventListener('mousedown', function () { mousePresionado = true; });
-
-document.addEventListener('mouseup', function () { mousePresionado = false; })
-
-
-
-//Borrar todo en el lienzo -------------------------------------------------------------------
-
-const btnBorrar = document.querySelector('.btnBorrar')
 
 btnBorrar.addEventListener('click', function () {
     cuadro.forEach(element => {
@@ -123,16 +98,9 @@ btnBorrar.addEventListener('click', function () {
     })
 })
 
+// ------------------------------------------------------------------------------------------------------------
+//Inicializar el programa
+// ------------------------------------------------------------------------------------------------------------
 
-cuadro.forEach(element => {
-    element.addEventListener('mouseover', function () {
-        if (mousePresionado == true) {
-            element.className = 'colorNegro'
-        }
-    })
-
-    element.addEventListener('click', function () { element.classList = 'colorNegro' })
-})
-
-
-
+crearCuadricula(10)
+correrCuadricula(cuadro);
